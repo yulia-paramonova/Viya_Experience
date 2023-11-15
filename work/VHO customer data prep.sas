@@ -41,3 +41,5 @@ caslib yulia datasource=(srctype="path") path='/greenmonthly-export/ssemonthly/h
 proc cas;
 table.save / caslib="yulia" name="INSURANCE_CUSTOMER_DATA"||".sashdat" table={name="INSURANCE_CUSTOMER_DATA", caslib="casuser"} replace=true;
 quit; 
+
+proc means data=CASUSER.INSURANCE_CUSTOMER_DATA n nmiss min max; run; 
