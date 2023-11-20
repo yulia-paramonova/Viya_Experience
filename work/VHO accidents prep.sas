@@ -39,8 +39,8 @@ name="ACCIDENTS_CORPORELS"
 quit; 
 
 
-caslib yulia datasource=(srctype="path") path='/greenmonthly-export/ssemonthly/homes/Yulia.Paramonova@sas.com';
-proc cas;
-table.save / caslib="yulia" name="ACCIDENTS_CORPORELS"||".sashdat" table={name="ACCIDENTS_CORPORELS", caslib="casuser"} replace=true;
-quit; 
+/* caslib yulia datasource=(srctype="path") path='/greenmonthly-export/ssemonthly/homes/Yulia.Paramonova@sas.com'; */
+/* proc cas; */
+/* table.save / caslib="yulia" name="ACCIDENTS_CORPORELS"||".sashdat" table={name="ACCIDENTS_CORPORELS", caslib="casuser"} replace=true; */
+/* quit;  */
 

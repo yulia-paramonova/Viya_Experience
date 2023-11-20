@@ -1,7 +1,12 @@
 proc cas;
 table.dropTable /caslib="casuser", name="DONNEES_INSEE" quiet=TRUE;
-table.loadTable / path="DONNEES_INSEE.sashdat", caslib="casuser", casout={caslib="casuser", name="DONNEES_INSEE", replace=TRUE};
+/* table.loadTable / path="DONNEES_INSEE.sashdat", caslib="casuser", casout={caslib="casuser", name="DONNEES_INSEE", replace=TRUE}; */
+table.loadTable / path="DONNEES_INSEE.sashdat", caslib="swee", casout={caslib="casuser", name="DONNEES_INSEE", replace=TRUE};
 quit;
+
+/* proc cas; */
+/* table.save / caslib="swee" name="DONNEES_INSEE"||".sashdat" table={name="donnees_insee", caslib="casuser"} replace=true; */
+/* quit;  */
 
 proc sql;
 %if %sysfunc(exist(CASUSER.donnees_insee1)) %then %do;
@@ -47,7 +52,7 @@ table.dropTable /caslib="casuser", name="donnees_insee1" quiet=TRUE;
 table.promote / name="donnees_insee2", caslib="casuser",  target="donnees_insee",  targetLib="casuser";
 quit; 
 
-caslib yulia datasource=(srctype="path") path='/greenmonthly-export/ssemonthly/homes/Yulia.Paramonova@sas.com';
-proc cas;
-table.save / caslib="yulia" name="DONNEES_INSEE"||".sashdat" table={name="donnees_insee", caslib="casuser"} replace=true;
-quit; 
+/* caslib yulia datasource=(srctype="path") path='/greenmonthly-export/ssemonthly/homes/Yulia.Paramonova@sas.com'; */
+/* proc cas; */
+/* table.save / caslib="yulia" name="DONNEES_INSEE"||".sashdat" table={name="donnees_insee", caslib="casuser"} replace=true; */
+/* quit;  */
