@@ -1,11 +1,11 @@
-proc cas;
+proc cas; *drop la table si existe dans casuser et charger depuis swee;
 table.dropTable /caslib="casuser", name="VHO_ACCIDENTS_CORPORELS" quiet=TRUE;
 table.loadTable / path="VHO_ACCIDENTS_CORPORELS.sashdat", caslib="swee", casout={caslib="casuser", name="VHO_ACCIDENTS_CORPORELS", replace=TRUE};
 quit;
 
 proc means data=casuser.VHO_ACCIDENTS_CORPORELS min P1 P99 max mean n nmiss; run; 
 
-data casuser.VHO_ACCIDENTS_CORPORELS2;
+data casuser.VHO_ACCIDENTS_CORPORELS2; * créer des valeurs manquantes;
 set casuser.VHO_ACCIDENTS_CORPORELS;
 if 'largeur_chaussée'n <= 1 then 'largeur_chaussée'n=.;
 if v_max < 1 then v_max = . ;
@@ -13,12 +13,12 @@ run;
 
 proc means data=casuser.VHO_ACCIDENTS_CORPORELS2 min P1 P99 max mean n nmiss; run; 
 
-proc cas;
+proc cas; *promote la table;
 table.dropTable /caslib="casuser", name="VHO_ACCIDENTS_CORPORELS" quiet=TRUE;
 table.promote / name="VHO_ACCIDENTS_CORPORELS2", caslib="casuser",  target="ACCIDENTS_CORPORELS",  targetLib="casuser";
 quit; 
 
-proc cas;
+proc cas; *ajouter des labels;
 table.alterTable /
 caslib="casuser"
 columns={{label="Numéro d'accident", name="Num_Acc"},

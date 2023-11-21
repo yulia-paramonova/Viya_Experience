@@ -1,4 +1,4 @@
-proc cas;
+proc cas;*drop la table si existe dans casuser et charger depuis swee;
 table.dropTable /caslib="casuser", name="DONNEES_INSEE" quiet=TRUE;
 /* table.loadTable / path="DONNEES_INSEE.sashdat", caslib="casuser", casout={caslib="casuser", name="DONNEES_INSEE", replace=TRUE}; */
 table.loadTable / path="DONNEES_INSEE.sashdat", caslib="swee", casout={caslib="casuser", name="DONNEES_INSEE", replace=TRUE};
@@ -8,7 +8,7 @@ quit;
 /* table.save / caslib="swee" name="DONNEES_INSEE"||".sashdat" table={name="donnees_insee", caslib="casuser"} replace=true; */
 /* quit;  */
 
-proc sql;
+proc sql; *extraire que des variables necessaires;
 %if %sysfunc(exist(CASUSER.donnees_insee1)) %then %do;
     drop table CASUSER.donnees_insee1;
 %end;
@@ -16,7 +16,7 @@ proc sql;
     drop view CASUSER.donnees_insee1;
 %end;
 quit;
-;
+
 PROC FEDSQL SESSREF=mysession;
 	CREATE TABLE CASUSER."donnees_insee1" AS
 		SELECT
@@ -37,7 +37,7 @@ RUN;
 proc means data=casuser.donnees_insee1 min P1 P99 max mean n nmiss; run; 
 
 
-data casuser.donnees_insee2;
+data casuser.donnees_insee2; * créer des valeurs manquantes;
 set casuser.donnees_insee1;
 if Population=0 then population=.;
 if "Altitude Moyenne"n =0 then "Altitude Moyenne"n=.;
@@ -46,7 +46,7 @@ run;
 
 proc means data=casuser.donnees_insee2 min P1 P99 max mean n nmiss; run; 
 
-proc cas;
+proc cas; *promote la table;
 table.dropTable /caslib="casuser", name="donnees_insee" quiet=TRUE;
 table.dropTable /caslib="casuser", name="donnees_insee1" quiet=TRUE;
 table.promote / name="donnees_insee2", caslib="casuser",  target="donnees_insee",  targetLib="casuser";
