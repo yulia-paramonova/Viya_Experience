@@ -15,10 +15,10 @@ run;
 
 /* Flux */
 
-filename flux filename="&_USERHOME/hands_on_prepa.flw";
+filename flux "&_USERHOME/Viya_Exp_Prepa.flw"; 
 
 proc http
-url="https://raw.githubusercontent.com/yulia-paramonova/Viya-Hands-On/main/hands_on_prepa.flw"
+url="https://raw.githubusercontent.com/yulia-paramonova/Viya-Hands-On/main/work/Viya_Exp_Prepa.flw"
 method="GET"
 out=flux;
 run;
