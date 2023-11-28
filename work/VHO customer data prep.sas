@@ -19,9 +19,9 @@ RUN;
 proc cas; *drop variable qui n'ont que des valeurs manquantes + ajouter des labels;
 table.alterTable /
 caslib="casuser"
-columns={{label="Date de début de couverture", name="BEGIN_COV_DT", drop=TRUE}
-,{label="Date de fin de couverture", name="END_COV_DT", drop=TRUE}
-,{label="Date de l'annulation", name="CANCELLATION_DT", drop=TRUE}
+columns={{label="Date de début de couverture", name="BEGIN_COV_DT"}
+,{label="Date de fin de couverture", name="END_COV_DT"}
+,{label="Date de l'annulation", name="CANCELLATION_DT"}
 ,{label="Client: code du région", name="CUST_REGION_CD"}
 ,{label="Numéro de la police d'assurance", name="POLICY_ID"}
 ,{label="Montant du risque sur la police d'assurance", name="POLICY_EXPOSURE_AMT"}

@@ -1,5 +1,6 @@
 proc cas; *drop la table si existe dans casuser et charger depuis swee;
 table.dropTable /caslib="casuser", name="VHO_ACCIDENTS_CORPORELS" quiet=TRUE;
+table.dropTable /caslib="casuser", name="ACCIDENTS_CORPORELS" quiet=TRUE;
 table.loadTable / path="VHO_ACCIDENTS_CORPORELS.sashdat", caslib="swee", casout={caslib="casuser", name="VHO_ACCIDENTS_CORPORELS", replace=TRUE};
 quit;
 
