@@ -42,6 +42,7 @@ set casuser.donnees_insee1;
 if Population=0 then population=.;
 if "Altitude Moyenne"n =0 then "Altitude Moyenne"n=.;
 if 'Code Département'n=. then 'Code Département'n=999;
+if 'Code Département'n=97 then delete; *pour ne pas avoir plusieurs régions par département;
 run; 
 
 proc means data=casuser.donnees_insee2 min P1 P99 max mean n nmiss; run; 
