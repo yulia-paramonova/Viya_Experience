@@ -5,7 +5,8 @@ table.dropTable /caslib="casuser", name="INSURANCE_CUSTOMER_DATA" quiet=TRUE;
 quit;
 
 data CASUSER.INSURANCE_CUSTOMER_DATA; *copier la table de swee dans casuser et remplacer les codes régions pour pouvoir faire la jointure plus tard;
-set SWEE.VHO_INSURANCE_CUSTOMER_DATA (drop=CUST_REGION_CD rename=(CUST_REGION_CD_MAP=CUST_REGION_CD));
+/* set SWEE.VHO_INSURANCE_CUSTOMER_DATA (drop=CUST_REGION_CD rename=(CUST_REGION_CD_MAP=CUST_REGION_CD)); */
+set SWEE.UE_INSURANCE_CUSTOMER_DATA (drop=CUST_REGION_CD rename=(CUST_REGION_CD_MAP=CUST_REGION_CD));
 if CUST_REGION_CD = 23 then CUST_REGION_CD = 24;
 else if CUST_REGION_CD = 25 then CUST_REGION_CD = 27;
 else if CUST_REGION_CD = 26 then CUST_REGION_CD = 28;
