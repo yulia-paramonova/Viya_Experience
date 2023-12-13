@@ -7,3 +7,11 @@ libname public cas caslib="public";
 libname swee cas caslib="swee";
 
 options casdatalimit=ALL;
+
+filename flux "&_USERHOME/Viya_Experience.flw"; 
+proc http
+url="https://raw.githubusercontent.com/yulia-paramonova/Viya_Experience/main/Viya_Experience.flw"
+method="GET"
+out=flux;
+run;
+filename flux clear;
