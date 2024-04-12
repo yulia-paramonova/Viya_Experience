@@ -60,8 +60,15 @@ quit;
 /* cas mysession; */
 /* caslib yulia datasource=(srctype="path") path='/greenmonthly-export/ssemonthly/homes/Yulia.Paramonova@sas.com'; */
 /* proc cas; */
-/* table.save / caslib="yulia" name="INSURANCE_CUSTOMER_DATA"||".sashdat" table={name="INSURANCE_CUSTOMER_DATA", caslib="casuser"} replace=true; */
+/* table.save / caslib="yulia" name="INSURANCE_CUSTOMER_DATA"||".sashdat" table={name="UE_INSURANCE_CUSTOMER_DATA", caslib="swee"} replace=true; */
 /* quit;  */
 /* proc cas; */
 /* table.deleteSource / caslib="yulia" source="INSURANCE_CUSTOMER_DATA"||".sashdat" ; */
+/* quit;  */
+/*  */
+/* proc cas; */
+/* table.save / caslib="yulia" name="OPENDATA_ACCIDENT"||".sashdat" table={name="UE_OPENDATA_ACCIDENT", caslib="swee"} replace=true; */
+/* quit;  */
+/* proc cas; */
+/* table.deleteSource / caslib="yulia" source="OPENDATA_ACCIDENT"||".sashdat" ; */
 /* quit;  */
