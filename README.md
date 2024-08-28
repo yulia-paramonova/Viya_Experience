@@ -5,5 +5,3 @@
 [Viya Trial](https://www.sas.com/fr_fr/trials/software/viya/viya-trial-form.html)
 
 [Questionnaire](https://forms.office.com/Pages/ResponsePage.aspx?id=XE3BsSU2s0WkMJVSNzoML7xb9kiO-RZHjfeO7_4YlBNURExJMFpTWFZOVVhUNkRNVUNDTjlQMlVQTy4u)
-
-[SPRING CAMPUS DATA](https://www.sfrcloud.sfr.fr/web/app/share/invite/aGz6Ax7yQA)
