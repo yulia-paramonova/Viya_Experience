@@ -1,16 +1,42 @@
 /* Données */
 
-filename outfile "&_USERHOME/ACCIDENTS_CORPORELS_testgit.sashdat";
+/* UE_INSURANCE_CUSTOMER_DATA_DVR */
+
+filename outfile "&_USERHOME/UE_INSURANCE_CUSTOMER_DATA_DVR.zip";
 proc http
-/* url="https://raw.githubusercontent.com/yulia-paramonova/Viya-Hands-On/main/Data/table_VHO_ACCIDENTS_CORPORELS.csv" */
-url="https://github.com/yulia-paramonova/Viya-Hands-On/raw/main/Data/ACCIDENTS_CORPORELS.sashdat"
+url="https://github.com/yulia-paramonova/Viya_Experience/tree/main/Donn%C3%A9es/UE_INSURANCE_CUSTOMER_DATA_DVR.zip"
 method="GET"
 out=outfile;
 run;
 
+filename inzip zip "&_USERHOME/UE_INSURANCE_CUSTOMER_DATA_DVR.zip";
+
+data _null_;
+    infile inzip(UE_INSURANCE_CUSTOMER_DATA_DVR.sashdat) lrecl=256 recfm=F length=length eof=eof unbuf;
+    file "&_USERHOME/UE_INSURANCE_CUSTOMER_DATA_DVR.sashdat" lrecl=256 recfm=N;
+    input;
+    put _infile_;
+    return;
+    eof:
+    stop;
+run;
+
 proc casutil;
-	load file="&_USERHOME/ACCIDENTS_CORPORELS.sashdat"
-		promote casout='ACCIDENTS_CORPORELS_testgit' outcaslib='casuser';
+	load file="&_USERHOME/UE_INSURANCE_CUSTOMER_DATA_DVR.sashdat"
+		promote casout='UE_INSURANCE_CUSTOMER_DATA_DVR' outcaslib='casuser';
+run;
+
+/* UE_OPENDATA_ACCIDENT */
+filename outfile2 "&_USERHOME/UE_OPENDATA_ACCIDENT.sashdat";
+proc http
+url="https://github.com/yulia-paramonova/Viya_Experience/tree/main/Donn%C3%A9es/UE_OPENDATA_ACCIDENT.sashdat"
+method="GET"
+out=outfile2;
+run;
+
+proc casutil;
+	load file="&_USERHOME/UE_OPENDATA_ACCIDENT.sashdat"
+		promote casout='UE_OPENDATA_ACCIDENT' outcaslib='casuser';
 run;
 
 /* Flux */
@@ -18,17 +44,7 @@ run;
 filename flux "&_USERHOME/Viya_Experience.flw"; 
 
 proc http
-url="https://raw.githubusercontent.com/yulia-paramonova/Viya_Experience/main/Viya_Experience.flw"
-method="GET"
-out=flux;
-run;
-
-filename flux clear;
-
-filename flux "&_USERHOME/Viya_Experience_start.flw"; 
-
-proc http
-url="https://raw.githubusercontent.com/yulia-paramonova/Viya_Experience/main/Viya_Experience_start.flw"
+url="https://raw.githubusercontent.com/yulia-paramonova/Viya_Experience/main/Flux/Viya_Experience.flw"
 method="GET"
 out=flux;
 run;
