@@ -1,11 +1,13 @@
 /* Données */
 
+/* Données */
+
 /* UE_INSURANCE_CUSTOMER_DATA_DVR */
 filename outfile clear;
 filename outfile "&_USERHOME/UE_INSURANCE_CUSTOMER_DATA_DVR.zip";
 proc http
 clear_cache
-url="https://github.com/yulia-paramonova/Viya_Experience/tree/main/Data/UE_INSURANCE_CUSTOMER_DATA_DVR.zip"
+url="https://github.com/yulia-paramonova/Viya_Experience/raw/main/Data/UE_INSURANCE_CUSTOMER_DATA_DVR.zip"
 method="GET"
 out=outfile;
 run;
@@ -33,7 +35,7 @@ run;
 
 filename outfile2 "&_USERHOME/UE_OPENDATA_ACCIDENT.sashdat";
 proc http
-url="https://github.com/yulia-paramonova/Viya_Experience/tree/main/Data/UE_OPENDATA_ACCIDENT.sashdat"
+url="https://github.com/yulia-paramonova/Viya_Experience/raw/main/Data/UE_OPENDATA_ACCIDENT.sashdat"
 method="GET"
 out=outfile2;
 run;
