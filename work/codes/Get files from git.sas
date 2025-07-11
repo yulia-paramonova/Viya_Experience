@@ -52,6 +52,16 @@ run;
 
 filename flux clear;
 
+filename flux "&_USERHOME/Flux.flw"; 
+
+proc http
+url="https://raw.githubusercontent.com/yulia-paramonova/Viya_Experience/main/Flux/Flux.flw"
+method="GET"
+out=flux;
+run;
+
+filename flux clear;
+
 /* Etapes personnalisées */
 
 /* filename outfile filesrvc folderpath="/Public" filename='Promote.step'; */
@@ -79,6 +89,16 @@ filename outfile filesrvc folderpath="/Users/&SYS_COMPUTE_SESSION_OWNER/My Folde
 /* filename outfile "&_USERHOME/Divers/Call_Api.step"; */
 proc http
 url='https://raw.githubusercontent.com/yulia-paramonova/Viya_Experience/main/Etapes%20personnalis%C3%A9es/Call_Api.step'
+method="GET"
+out=outfile;
+run;
+filename outfile clear;
+
+
+
+filename outfile filesrvc folderpath="/Users/&SYS_COMPUTE_SESSION_OWNER/My Folder" filename='etape.step';
+proc http
+url='https://raw.githubusercontent.com/yulia-paramonova/Viya_Experience/main/Etapes%20personnalis%C3%A9es/etape.step'
 method="GET"
 out=outfile;
 run;
