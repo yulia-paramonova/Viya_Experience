@@ -1,0 +1,7 @@
+Proc sql inobs=&inputfield1.;
+    create table &outputtable1. as
+    select *,
+    case when &columnselector1. >0 then '1' else '0' end as target,
+    case when ranuni(1)<0.7 then 1 else 0 end as partition
+    from &inputtable1.;
+quit;
