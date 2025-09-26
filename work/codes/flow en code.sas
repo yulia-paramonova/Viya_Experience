@@ -1,14 +1,14 @@
 /* PREPARER LES DONNES INTERNES */
 
 data casuser.customer_prep;
-    set CASUSER.UE_INSURANCE_CUSTOMER_DATA_DVR (drop=BEGIN_COV_DT END_COV_DT CANCELLATION_DT);
+    set cafrance.UE_INSURANCE_CUSTOMER_DATA_DVR (drop=BEGIN_COV_DT END_COV_DT CANCELLATION_DT);
 run; 
 
 /* Prepare open data */
 
 /* Remplacer les valeurs manquantes de toutes les variables numeriques par 0. */
 data CASUSER.OPENDATA_prep;
-   set CASUSER.UE_OPENDATA_ACCIDENT;
+   set cafrance.UE_OPENDATA_ACCIDENT;
    array change _numeric_;
         do over change;
             if change=. then change=0;
@@ -55,8 +55,8 @@ run;
 
 /* Joindre les tables pour créer la table finale pour prédire le nombre de sinistres par conducteur */
 
-proc fedsql sessref=yuliasess;
-    create table public.data_for_ml as
+proc fedsql sessref=ss;
+    create table casuser.data_for_ml as
     SELECT 
       t1.*,
       t2.*  
@@ -65,3 +65,7 @@ proc fedsql sessref=yuliasess;
    ;
 quit;
 run;
+
+proc datasets library = CASUSER memtype = (data view) nolist nowarn;
+   delete OPENDATA_PREP customer_prep;
+quit;

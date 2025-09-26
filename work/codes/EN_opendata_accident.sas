@@ -23,7 +23,6 @@ columns=
 ,{label="Department Code", name="Code Département", rename="Department Code"}
 ,{label="Average Altitude", name="Altitude", rename="Altitude"}
 ,{label="Population", name="Population", rename="Population"}
-,{label="Department", name="Département", rename="Department"}
 ,{label="Number of Accidents", name="Nombre d'accident", rename="Number of Accidents"}
 ,{label="Average Maximum Speeds", name="Vitesses maximales", rename="Maximum Speeds"}
 ,{label="Average Central Median Width", name="Largeur TP central", rename="Central Median Width"}
