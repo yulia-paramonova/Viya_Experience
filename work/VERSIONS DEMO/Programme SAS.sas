@@ -1,2 +1,2 @@
 /* V1 */
-/* à effacer dans V2 */
+/* V2 */
